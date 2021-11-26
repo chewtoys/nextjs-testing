@@ -24,7 +24,7 @@ describe("Recoil useCounter Hook", () => {
         const { result } = renderHook(() => useCounter(), {
             wrapper: AllTheProviders,
         });
-        const [_, { increase }] = result.current;
+        const [, { increase }] = result.current;
 
         act(() => {
             increase();
@@ -39,7 +39,7 @@ describe("Recoil useCounter Hook", () => {
         const { result } = renderHook(() => useCounter(), {
             wrapper: AllTheProviders,
         });
-        const [_, { decrease }] = result.current;
+        const [, { decrease }] = result.current;
 
         act(() => {
             decrease();

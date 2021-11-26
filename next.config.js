@@ -1,3 +1,6 @@
 const withPlugins = require("next-compose-plugins");
 
-module.exports = withPlugins([], {});
+const nextConfig= {
+}
+
+module.exports = withPlugins([], nextConfig);

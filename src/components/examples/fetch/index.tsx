@@ -4,34 +4,36 @@ import React, { useEffect, useState } from "react";
  * This component is generated as an example for fetch
  */
 
+interface Joke {
+    id: number;
+    type: string;
+    setup: string;
+    punchline: string;
+}
+
 const API_URL =
     "https://official-joke-api.appspot.com/jokes/programming/random";
 
+const __DEV__ = process.env.NODE_ENV === "development";
 export const FetchExample = () => {
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<Error | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<Joke[]>([]);
 
-    console.log("data: ", data);
-    // Note: the empty deps array [] means
-    // this useEffect will run once
-    // similar to componentDidMount()
-    useEffect(() => {
+    __DEV__ && console.log("data: ", data); 
+    
+    useEffect( () =>  {
         fetch(API_URL)
             .then((res) => {
-                console.log("res: ", res);
                 return res.json();
             })
             .then(
                 (result) => {
-                    console.log("result: ", result);
                     setData(result);
                     setIsLoaded(true);
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
+
+                (error: Error) => {
                     setIsLoaded(true);
                     setError(error);
                 },
