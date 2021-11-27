@@ -1,11 +1,11 @@
 const { pathsToModuleNameMapper } = require("ts-jest/utils");
-const { compilerOptions } = require("../tsconfig.json");
+const { compilerOptions } = require("./tsconfig.json");
 
 const paths = compilerOptions.paths ? compilerOptions.paths : {};
 
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-    rootDir: "../",
+    rootDir: "./",
     testEnvironment: "jsdom",
     transform: {
         /* Use babel-jest to transpile tests with the next/babel preset

@@ -12,7 +12,7 @@ describe("Recoil useTodos Hook", () => {
         expect(todos.length).toEqual(0);
     });
 
-    it("should increment counter by 1", async () => {
+    it("should add todo", async () => {
         const { result } = renderHook(() => useTodos(), {
             wrapper: AllTheProviders,
         });
@@ -31,7 +31,37 @@ describe("Recoil useTodos Hook", () => {
         expect(todos[0].text).toBe("Learn Recoil");
     });
 
-    it("should decrement counter by 1", async () => {
+    it("should edit todo", async () => {
+        const { result } = renderHook(() => useTodos(), {
+            wrapper: AllTheProviders,
+        });
+        const [, { addTodo, updateTodo }] = result.current;
+
+        act(() => {
+            addTodo({
+                id: 111,
+                text: "Learn Recoil",
+            });
+
+            
+        });
+
+        act(() => {
+            updateTodo(111, {
+                id: 111,
+                text: "Try Recoil",
+            });
+        });
+
+        const [todos] = result.current;
+
+        console.log(todos);
+        
+        // expect(todos.length).toBe(1);
+        // expect(todos[0].text).toBe("Try Recoil");
+    });
+
+    it("should remove todo", async () => {
         const { result } = renderHook(() => useTodos(), {
             wrapper: AllTheProviders,
         });
