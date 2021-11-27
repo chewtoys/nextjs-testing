@@ -5,6 +5,8 @@ import {
     RenderResult,
 } from "@testing-library/react";
 
+import '@testing-library/jest-dom'
+
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 

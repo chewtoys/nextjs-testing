@@ -1,6 +1,23 @@
 const withPlugins = require("next-compose-plugins");
 
-const nextConfig= {
-}
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+    swcMinify: true,
+    experimental: {        
+        styledComponents: true,
+    },
+
+    // 
+    reactStrictMode: true,
+
+    // 
+    i18n: {
+        locales: ['en',],
+        defaultLocale: 'en',
+      },
+    
+};
 
 module.exports = withPlugins([], nextConfig);
