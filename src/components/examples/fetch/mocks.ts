@@ -1,14 +1,23 @@
-import nock from "nock";
-
-export const mockResponse = [
-    {
-        id: 74,
-        type: "programming",
-        setup: "Why do C# and Java developers keep breaking their keyboards?",
-        punchline: "Because they use a strongly typed language.",
+export const mockResponse = {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+        street: "Kulas Light",
+        suite: "Apt. 556",
+        city: "Gwenborough",
+        zipcode: "92998-3874",
+        geo: {
+            lat: "-37.3159",
+            lng: "81.1496",
+        },
     },
-];
-
-nock("https://official-joke-api.appspot.com")
-    .get("/jokes/programming/random")
-    .reply(200, mockResponse);
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+        name: "Romaguera-Crona",
+        catchPhrase: "Multi-layered client-server neural-net",
+        bs: "harness real-time e-markets",
+    },
+};

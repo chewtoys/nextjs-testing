@@ -4,67 +4,103 @@ import React, { useEffect, useState } from "react";
  * This component is generated as an example for fetch
  */
 
-interface Joke {
+export interface User {
     id: number;
-    type: string;
-    setup: string;
-    punchline: string;
+    name: string;
+    username: string;
+    email: string;
+    address: Address;
+    phone: string;
+    website: string;
+    company: Company;
+}
+export interface Address {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: Geo;
+}
+export interface Geo {
+    lat: string;
+    lng: string;
+}
+export interface Company {
+    name: string;
+    catchPhrase: string;
+    bs: string;
 }
 
-const API_URL =
-    "https://official-joke-api.appspot.com/jokes/programming/random";
+const API_URL = "https://jsonplaceholder.typicode.com/users/1";
 
 const __DEV__ = process.env.NODE_ENV === "development";
+
 export const FetchExample = () => {
     const [error, setError] = useState<Error | null>(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [data, setData] = useState<Joke[]>([]);
+    const [isLoaded, setIsLoaded] = useState(true);
+    const [data, setData] = useState<User | null>(null);
 
-    __DEV__ && console.log("data: ", data); 
-    
-    useEffect( () =>  {
+    useEffect(() => {
         fetch(API_URL)
-            .then((res) => {
-                return res.json();
-            })
+            .then((res) => res.json())
             .then(
                 (result) => {
+                    setIsLoaded(false);
                     setData(result);
-                    setIsLoaded(true);
                 },
 
-                (error: Error) => {
-                    setIsLoaded(true);
+                (error) => {
+                    setIsLoaded(false);
                     setError(error);
                 },
             );
     }, []);
 
     if (error) {
-        return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return <div>Loading...</div>;
-    } else {
         return (
             <div>
                 <header>
-                    <h2>Fetch Data Fetching Example</h2>
+                    <h2>{error.name}</h2>
                 </header>
-                <main data-testid="joke-container">
-                    <p>Programmer Jokes {`#${data[0].id}`}</p>
-                    <p>{data[0].setup}</p>
-                    <p>{data[0].punchline}</p>
+                <main data-testid="error-container">
+                    Error: <p>{error.message}</p>
                 </main>
-                <footer>
-                    <a
-                        href="https://swr.vercel.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Go To Documentation
-                    </a>
-                </footer>
             </div>
         );
     }
+
+    if (isLoaded) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div>
+            <header>
+                <h2>Profile Info</h2>
+            </header>
+
+            {data && (
+                <main data-testid="users-container">
+                    <p>Reg No. : {`#${data.id}`}</p>
+                    <p>
+                        Name:{" "}
+                        <span data-testid="user-username">{data.username}</span>{" "}
+                    </p>
+                    <p>
+                        Email:{" "}
+                        <span data-testid="user-email">{data.email}</span>{" "}
+                    </p>
+                </main>
+            )}
+            <footer>
+                <a
+                    href="https://swr.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Go To Documentation
+                </a>
+            </footer>
+        </div>
+    );
 };

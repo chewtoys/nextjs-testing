@@ -9,7 +9,7 @@
         "build:analyze": "ANALYZE=true npm run build",
         "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
         "prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'",
-        "test": "jest -c test/jest.config.js",
+        "test": "jest",
         "prepare": "husky install",
         "cypress:open": "cypress open",
         "cypress:run": "cypress run --config video=false",
