@@ -22,8 +22,9 @@
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         
-        "prettier",
-        "plugin:jest/recommended",
-        "next/core-web-vitals"
+        "prettier"
+        // ,
+        // "plugin:jest/recommended"
+        // "next/core-web-vitals"
     ]
 }
