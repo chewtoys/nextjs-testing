@@ -33,7 +33,7 @@ export interface Company {
 
 const API_URL = "https://jsonplaceholder.typicode.com/users/1";
 
-const __DEV__ = process.env.NODE_ENV === "development";
+// const __DEV__ = process.env.NODE_ENV === "development";
 
 export const FetchExample = () => {
     const [error, setError] = useState<Error | null>(null);

@@ -24,7 +24,7 @@ export const RecoilExample: React.FC = () => {
                     -
                 </button>
             </div>
-            <a href="https://recoiljs.org/" target="_blank">
+            <a href="https://recoiljs.org/" target="_blank" rel="noreferrer">
                 Go To Documentation
             </a>
         </div>

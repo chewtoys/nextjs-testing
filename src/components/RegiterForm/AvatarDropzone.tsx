@@ -2,7 +2,7 @@ import React from "react";
 import { useDropzone } from "react-dropzone";
 
 export default function AvatarDropzone() {
-    const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+    const { /* acceptedFiles, */ getRootProps, getInputProps } = useDropzone();
 
     // const files = acceptedFiles.map((file) => (
     //     <li key={file.path}>

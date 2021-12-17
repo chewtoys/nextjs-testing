@@ -4,9 +4,15 @@
     "plugins": ["@typescript-eslint"],
     "overrides": [
         {
-            "files": ["*.js"],
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
             "rules": {
-                "@typescript-eslint/no-var-requires": "off"
+                "react/no-unescaped-entities": "off",
+                // "@typescript-eslint/no-var-requires": "off",
+                "react/react-in-jsx-scope": "off",
+
+                // Consider using explicit annotations for object literals
+                // and function return types even when they can be inferred.
+                "@typescript-eslint/explicit-function-return-type": "off"
             }
         }
     ],
@@ -16,15 +22,24 @@
         "amd": true,
         "jest": true
     },
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    },
     "extends": [
         "eslint:recommended",
-        // "plugin:react/recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        
-        "prettier"
-        // ,
+
         // "plugin:jest/recommended"
-        // "next/core-web-vitals"
+        "prettier",
+
+        "plugin:@next/next/recommended",
+
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended"
+        // "plugin:import/recommended"
     ]
 }
